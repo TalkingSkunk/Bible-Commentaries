@@ -4,10 +4,10 @@ db.enablePersistence()
   .catch(function(err) {
     // if there are multiple tabs open at once...
     if (err.code == 'failed-precondition') {
-      console.log('persistance failed');
+      console.log('persistance failed. Multiple tabs open.');
     // if the browser does not support indexedDB...
     } else if (err.code == 'unimplemented') {
-      console.log('persistance not available');
+      console.log('persistance not available. No browser support.');
     }
   });
 
