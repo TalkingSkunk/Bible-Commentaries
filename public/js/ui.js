@@ -8,8 +8,12 @@ document.addEventListener('DOMContentLoaded', function() {
   M.Sidenav.init(menus, {edge: 'right'});
   // pinpoint the sidenav section (add chapter form)
   const forms = document.querySelectorAll('.side-form');
-    // use the Sidenav from Materialize JS library, then initialize it (using init()), passing it the forms variable, and the optional object (specifies we want the sidenav to slide from the left)
+  // use the Sidenav from Materialize JS library, then initialize it (using init()), passing it the forms variable, and the optional object (specifies we want the sidenav to slide from the left)
   M.Sidenav.init(forms, {edge: 'left'});
+  // dropdown list of the books
+  const dropdown = document.querySelectorAll('.dropdown-trigger');
+  // initialize the Dropdown
+  M.Dropdown.init(dropdown, {alignment: 'left'});
 });
 
 // render chapter data
