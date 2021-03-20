@@ -1,3 +1,7 @@
+// pinpoint the HTML elemet with class "bookTitle" (only in index.html)
+const bookTitle = document.querySelector('.bookTitle');
+// pinpoint the HTML element with id "bookList" (only in index.html)
+const bookList = document.querySelector('#bookList');
 // pinpoint the HTML element with class "chapters" (only in index.html)
 const chapters = document.querySelector('.chapters');
 // once all DOM content in browser are loaded, trigger a callback function
@@ -10,19 +14,32 @@ document.addEventListener('DOMContentLoaded', function() {
   const forms = document.querySelectorAll('.side-form');
   // use the Sidenav from Materialize JS library, then initialize it (using init()), passing it the forms variable, and the optional object (specifies we want the sidenav to slide from the left)
   M.Sidenav.init(forms, {edge: 'left'});
-  // dropdown list of the books
+  // dropdown list of the books, and initialize the Dropdown
   const dropdown = document.querySelectorAll('.dropdown-trigger');
-  // initialize the Dropdown
   M.Dropdown.init(dropdown, {alignment: 'left'});
+  // pinpoint the modal form, and initialize
+  const modal = document.querySelectorAll('.modal');
+  M.Modal.init(modal, {inDuration: 1000});
 });
-
+// render book title data
+const renderTitle = title => {
+  bookTitle.innerHTML = `
+    <h3 id="bookTitle" class="center" data-id=${title}>${title}</h3>
+  `
+}
+// render book into bookList dropdown menu
+const renderBookList = book => {
+  bookList.innerHTML += `
+  <li><a href="javascript: renderTitle('${book}')" data-id="${book}">${book}</a><i class="material-icons" data-id="${book}">delete</i></li>
+  `
+}
 // render chapter data
 const renderChapter = (data, id) => {
     const html = `
       <div class="card-panel chapter white row" data-id="${id}">
         <img src="./img/chapter.png" alt="chapter thumb">
         <div class="chapter-details">
-          <div class="chapter-number">${data.chapter}</div>
+          <div class="chapter-number">Chapter ${data.chapter}</div>
           <div class="chapter-commentary">${data.commentary}</div>
         </div>
         <div class="chapter-delete">
