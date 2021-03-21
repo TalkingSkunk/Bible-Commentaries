@@ -1,7 +1,7 @@
 // static cache version
-const staticCacheName = 'site-static-v66';
+const staticCacheName = 'site-static-v67';
 // dynamic cache version
-const dynamicCacheName = 'site-dynamic-v66';
+const dynamicCacheName = 'site-dynamic-v67';
 // CORE assets (keys) to be saved in static cache storage
 const assets = [
   '/',
