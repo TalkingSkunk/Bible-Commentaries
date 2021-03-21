@@ -44,7 +44,7 @@
     </ul>
 
     <!-- Dropdown Trigger -->
-    <a class='dropdown-trigger btn' href='#' data-target='bookList'>Books</a>
+    <a class='dropdown-trigger btn center' href='#' data-target='bookList'>Books</a>
     <!-- Dropdown Structure -->
     <ul id='bookList' class='dropdown-content'>
         <!-- first list is a modal trigger -->
@@ -53,6 +53,7 @@
         <li class="divider" tabindex="-1"></li>
         <!-- populate the book list with renderBookList() from ui.js -->
     </ul>
+
     <!-- Initially hidden Modal Structure with id="modal1" -->
     <div id="modal1" class="modal">
         <form id="newBookForm" class="add-chapter container section">
@@ -71,9 +72,11 @@
             </div>
         </form>
     </div>
+
     <!-- book title -->
     <div class="bookTitle container grey-text text-darken-2">
         <!-- populated by renderTitle() from ui.js -->
+        <h3 id="bookTitle" class="center"></h3>
     </div>
     <!-- chapters -->
     <div class="chapters container grey-text text-darken-1">

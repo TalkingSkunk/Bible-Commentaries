@@ -12,32 +12,25 @@ db.enablePersistence()
   });
 
 // ADD A NEW BOOK
-// pinpoint the form from DOM
+// pinpoint the form from DOM (Modal)
 const bookForm = document.querySelector('#newBookForm');
+// listen for submit event from the Modal form
 bookForm.addEventListener('submit', evt =>{
   // submit event, by default, refreshes the page.
   evt.preventDefault();
   // extract user input for book name
   const book = bookForm.book.value.trim();
   // Create a document with the Book name as its unique ID
-  db.collection('books').doc(book).set({})
+  db.collection('books').doc(`${book}`).set({})
     // no need to do .then (since there's nothing else to do)
     .catch(err => console.log(err));
   // clear the form inputs after.
   bookForm.book.value = '';
-
-  // fetch all documents inside collection "fragments" inside the Book document
-  // db.collection('books').doc(book).collection('fragments').get()
-  //   .then(snapshot => {
-  //     snapshot.docs.forEach(doc => {
-  //     //populate with the documents found in the book's subcollection (trigger function from ui.js)
-  //     renderChapter(doc.data(), doc.id);
-  //     })
-  //   })
   // send title data to DOM (trigger function from ui.js)
   renderTitle(book);
 })
-// fetch all documents inside collection, and populate the bookList dropdown menu
+
+// fetch all documents inside collection, and populate the bookList Dropdown menu
 db.collection('books').onSnapshot(snapshot => {
   snapshot.docChanges().forEach(change => {
     // sense the change in the Collection, and output to DOM so user can see the change.
@@ -48,39 +41,52 @@ db.collection('books').onSnapshot(snapshot => {
   })
 });
 
-// pinpoint the bookList Dropdown menu section
-const bookList2 = document.querySelector('#bookList');
-// Listen for a click anywhere inside the section...
-bookList2.addEventListener('click', evt => {
-  // if you click on the "anchor" tag...
-  if(evt.target.tagName === 'A'){
-    // extract the attribute data (i.e. the id of the document; i.e. the book name)
-    const book = evt.target.getAttribute('data-id');
-    // pinpoint the HTML element with class "chapters" (only in index.html)
-    const chapters2 = document.querySelector('.chapters');
-    // refresh the DOM every time a new Anchor tag is clicked.
-    chapters2.innerHTML = '';
+// Select the node that will be observed for mutations (i.e. the element with id=bookTitle)
+const node = document.querySelector('#bookTitle');
+// Options for the observer (which mutations to observe)
+const config = {
+  childList: true, // observe direct children
+  subtree: true, // and lower descendants too
+  attributes: true
+};
+// Callback function to execute when mutations are observed
+const callback = function(mutationsList, observer) {
+  // Use traditional 'for loops' for IE 11
+  for(const mutation of mutationsList) {
+    if (mutation.type === 'childList') {
+      console.log('The book has been changed.');
+      // pinpoint the HTML element with class "chapters" (only in index.html), then refresh the DOM every time a bookList is clicked.
+      const chapters2 = document.querySelector('.chapters');
+      chapters2.innerHTML = '';
+      // pinpoint the HTML elemet with id "bookTitle" (only in index.html), then refresh the DOM every time a bookList is clicked.
+      const bookTitle2 = document.querySelector('#bookTitle');
+      const book = bookTitle2.innerText;
 
-    // 24/7 real-time listener sends back changes to database immediate. onSnapshot method sends back any change to the collection through a callback function, which takes the snapshot object. (**Snapshot listens not only to changes to database, but also changes to indexedDB. So DOM will reflect the changes even when offline.**)
-    db.collection('books').doc(book).collection('fragments').onSnapshot(snapshot => {
-      // docChanges() puts all changes into an array to the collection since the last snapshot. Then we cycle through each change object...
-      snapshot.docChanges().forEach(change => {
-        console.log('change:', change)
-        // sense the change in the Collection, and output to DOM so user can see the change.
-        if(change.type === 'added'){
-          // Add document data to DOM (trigger function from ui.js): doc property.data object (data inside each document), each id of document
-          renderChapter(change.doc.data(), change.doc.id);
-        };
-        // sense the change in the Collection, and output to DOM so user can see the change.
-        if(change.type === 'removed'){
-          // Remove document data from DOM (trigger function from ui.js): id of document to be removed
-          removeChapter(change.doc.id);
-        };
+      // 24/7 real-time listener sends back changes to database immediate. onSnapshot method sends back any change to the collection through a callback function, which takes the snapshot object. (**Snapshot listens not only to changes to database, but also changes to indexedDB. So DOM will reflect the changes even when offline.**)
+      db.collection('books').doc(book).collection('fragments').onSnapshot(snapshot => {
+        // docChanges() puts all changes into an array to the collection since the last snapshot. Then we cycle through each change object...
+        snapshot.docChanges().forEach(change => {
+          console.log('change:', change)
+          // sense the change in the Collection, and output to DOM so user can see the change.
+          if(change.type === 'added'){
+            // Add document data to DOM (trigger function from ui.js): doc property.data object (data inside each document), each id of document
+            renderChapter(change.doc.data(), change.doc.id);
+          };
+          // sense the change in the Collection, and output to DOM so user can see the change.
+          if(change.type === 'removed'){
+            // Remove document data from DOM (trigger function from ui.js): id of document to be removed
+            removeChapter(change.doc.id);
+          };
+        });
       });
-    });
+    }
   }
-});
-  
+};
+// Create an observer instance linked to the callback function
+const observer = new MutationObserver(callback);
+// Start observing the target node for configured mutations
+observer.observe(node, config);
+
 // ADD NEW CHAPTER
 // pinpoint the form from DOM
 const chapterForm = document.querySelector('#newChapterForm');
@@ -93,7 +99,7 @@ chapterForm.addEventListener('submit', evt => {
     commentary: chapterForm.commentary.value.trim()
   };
   // find what book we are in
-  const book = document.querySelector('#bookTitle').getAttribute('data-id');
+  const book = document.querySelector('#bookTitle').innerText;
   // Add the JS Object into the Collection
   db.collection('books').doc(book).collection('fragments').add(chapter)
     // no need to do .then (since there's nothing else to do)
@@ -110,6 +116,8 @@ const chapterContainer = document.querySelector('.chapters');
 chapterContainer.addEventListener('click', evt => {
   // if clicked target is <i> tag...
   if(evt.target.tagName === 'I'){
+    // find what book we are in
+    const book = document.querySelector('#bookTitle').getAttribute('data-id');
     // extract the attribute date (i.e. the id of the document)
     const id = evt.target.getAttribute('data-id');
     // pass on the id of the document to be deleted

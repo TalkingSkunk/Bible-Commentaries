@@ -1,5 +1,5 @@
 // pinpoint the HTML elemet with class "bookTitle" (only in index.html)
-const bookTitle = document.querySelector('.bookTitle');
+const bookTitle = document.querySelector('#bookTitle');
 // pinpoint the HTML element with id "bookList" (only in index.html)
 const bookList = document.querySelector('#bookList');
 // pinpoint the HTML element with class "chapters" (only in index.html)
@@ -23,14 +23,12 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 // render book title data
 const renderTitle = title => {
-  bookTitle.innerHTML = `
-    <h3 id="bookTitle" class="center" data-id=${title}>${title}</h3>
-  `
+  bookTitle.innerText = `${title}`;
 }
 // render book into bookList dropdown menu
 const renderBookList = book => {
   bookList.innerHTML += `
-  <li><a href="javascript: renderTitle('${book}')" data-id="${book}">${book}</a><i class="material-icons" data-id="${book}">delete</i></li>
+  <li><a href="javascript: renderTitle('${book}')" data-id="${book}">${book}</a></li>
   `
 }
 // render chapter data
