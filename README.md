@@ -1,5 +1,7 @@
 ## Future developments
 * prevent duplicate book names, and send red alert on add a book modal
+* prevent duplicate chapter number, and send red alert on sidenav
+* enable edit of existing chapters
 * alphanumeric order for books list, and for chapters list
 * authentication of users (username, and password)
 
