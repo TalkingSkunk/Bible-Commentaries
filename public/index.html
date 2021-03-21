@@ -42,18 +42,19 @@
                 <i class="material-icons">mail_outline</i>Contact</a>
         </li>
     </ul>
-
-    <!-- Dropdown Trigger -->
-    <a class='dropdown-trigger btn center' href='#' data-target='bookList'>Books</a>
-    <!-- Dropdown Structure -->
-    <ul id='bookList' class='dropdown-content'>
+    
+    <!-- centralize the Anchor tag with the Material icon (Add a book, or look at other books) that will trigger another "sidenav" section id="bookList" -->
+    <div class="center">
+        <a class="btn-floating btn-small waves-effect waves-light sidenav-trigger red" data-target="bookList"><i class="material-icons">account_balance</i></a>
+    </div>
+    <!-- initially hidden "sidenav" section with id="bookList" -->
+    <ul id='bookList' class='sidenav sidenav-close side-library'>
         <!-- first list is a modal trigger -->
         <li><a class="waves-effect waves-light modal-trigger" href="#modal1"><i    class="material-icons">add_circle_outline</i>Add a Book</a>
         </li>
         <li class="divider" tabindex="-1"></li>
         <!-- populate the book list with renderBookList() from ui.js -->
     </ul>
-
     <!-- Initially hidden Modal Structure with id="modal1" -->
     <div id="modal1" class="modal">
         <form id="newBookForm" class="add-chapter container section">
@@ -66,9 +67,7 @@
             </div>
             <div class="modal-footer">
                 <a href="#!" class="modal-close waves-effect waves-red btn-flat">Cancel</a>
-                <button class="modal-close btn waves-effect waves-light" type="submit" name="action">Start this Book
-                    <i class="material-icons right">send</i>
-                </button>
+                <button class="modal-close btn waves-effect waves-light" type="submit" name="action">Add</button>
             </div>
         </form>
     </div>
@@ -83,15 +82,14 @@
         <!-- populated by renderChapter() from ui.js -->
     </div>
 
-    <!-- centralize the Material Add button that will trigger another "sidenav" section id="side-form" -->
+    <!-- centralize Anchor tag with the Material Add icon (Add new chapter) that will trigger another "sidenav" section id="side-form" -->
     <div class="center">
         <a class="btn-floating btn-small add-btn sidenav-trigger" data-target="side-form">
             <i class="material-icons">add</i>
         </a>
     </div>
-
-    <!-- add chapter "sidenav" section with id="side-form" -->
-    <div id="side-form" class="sidenav side-form">
+    <!-- initially hidden add chapter "sidenav" section with id="side-form" -->
+    <div id="side-form" class="sidenav sidenav-close side-form">
         <form id="newChapterForm" class="add-chapter container section">
             <h6>New Chapter</h6>
             <div class="divider"></div>

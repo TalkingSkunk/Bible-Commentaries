@@ -10,6 +10,7 @@
   nav{
     background: var(--primary);
     border-bottom: 10px solid var(--secondary);
+    margin-bottom: 10px;
   }
   nav a{
     text-transform: uppercase;
