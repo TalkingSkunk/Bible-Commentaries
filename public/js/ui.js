@@ -32,7 +32,7 @@ const renderTitle = title => {
 // render book into bookList dropdown menu
 const renderBookList = book => {
   bookList.innerHTML += `
-  <li><a href="javascript: renderTitle('${book}')" data-id="${book}">${book}</a></li>
+  <li><a class="sidenav-close" href="javascript: renderTitle('${book}')" data-id="${book}">${book}</a></li>
   `
 }
 // render chapter data

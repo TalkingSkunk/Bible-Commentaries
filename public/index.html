@@ -48,9 +48,9 @@
         <a class="btn-floating btn-small waves-effect waves-light sidenav-trigger red" data-target="bookList"><i class="material-icons">account_balance</i></a>
     </div>
     <!-- initially hidden "sidenav" section with id="bookList" -->
-    <ul id='bookList' class='sidenav sidenav-close side-library'>
+    <ul id='bookList' class='sidenav side-library'>
         <!-- first list is a modal trigger -->
-        <li><a class="waves-effect waves-light modal-trigger" href="#modal1"><i    class="material-icons">add_circle_outline</i>Add a Book</a>
+        <li><a class="waves-effect waves-light modal-trigger sidenav-close" href="#modal1"><i class="material-icons">add_circle_outline</i>Add a Book</a>
         </li>
         <li class="divider" tabindex="-1"></li>
         <!-- populate the book list with renderBookList() from ui.js -->
@@ -89,7 +89,7 @@
         </a>
     </div>
     <!-- initially hidden add chapter "sidenav" section with id="side-form" -->
-    <div id="side-form" class="sidenav sidenav-close side-form">
+    <div id="side-form" class="sidenav side-form">
         <form id="newChapterForm" class="add-chapter container section">
             <h6>New Chapter</h6>
             <div class="divider"></div>
@@ -102,7 +102,7 @@
                 <label for="commentary">Commentary</label>
             </div>
             <div class="input-field center">
-                <button class="btn-small">Add</button>
+                <button class="btn-small sidenav-close">Add</button>
             </div>
         </form>
     </div>
