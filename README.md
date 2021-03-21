@@ -61,19 +61,15 @@ SOFTWARE.
 ## Description
 
 ### What needs are we meeting?
-* You are on a diet,
-    * who needs to keep track of your daily caloric intake,
-    * So you need a food tracker.
+* You are an avid book reader,
+    * who wants to keep a concise note of each chapter you read,
+    * So you need a book commentaries app.
 
 
 ### What would be the foreseeable consequences if the needs are unmet?
-* You will not be able to know how much calorie you have consumed in the day.
 
 
 ### What were your goals?
-* Take input from user,
-* Save the input on SQL database, and
-* Allow user to keep track of what food to eat, and the food that has already been eaten in the day.
 
 
 ### What have you done about it?
@@ -91,12 +87,12 @@ SOFTWARE.
 
 ```
 GIVEN the application,
-WHEN I open the Burger Maker,
-THEN I am presented with a page.
-WHEN I input a name of food,
-THEN I can see the food to be consumed on the left side of page.
-WHEN I click the [DEVOUR] button,
-THEN the food will be recorded as [devoured] and moved to the right side of page.
+WHEN I open the Bible Fragments,
+THEN I am presented with index page.
+WHEN I add a new Book,
+THEN I can see the Book's empty collection of commentaries.
+WHEN I click the Add button at the bottom,
+THEN I can add a commentary and a chapter number of the given book.
 ```
 
 ![Screenshot of working website](./hw11.png)
@@ -105,13 +101,11 @@ THEN the food will be recorded as [devoured] and moved to the right side of page
 
 ## Credits
 
-@Fil  
-@Luca  
 @ASKBCS Learning Assistant Online Help  
 
 ### Tutorials
-* https://developer.mozilla.org/
-* https://stackoverflow.com/
+* https://developer.mozilla.org/en-US/docs/Web/API/MutationObserver
+* https://www.youtube.com/watch?v=4XT23X0Fjfk&list=PL4cUxeGkcC9gTxqJBcDmoi5Q2pzDusSL7&ab_channel=TheNetNinja
 
 
 
