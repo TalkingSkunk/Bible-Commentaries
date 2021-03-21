@@ -1,3 +1,8 @@
+## Future developments
+* prevent duplicate book names, and send red alert on add a book modal
+* alphanumeric order for books list, and for chapters list
+* authentication of users (username, and password)
+
 # Bible-Fragments
 
 **Heroku Deployment URL**
