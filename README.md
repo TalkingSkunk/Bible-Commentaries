@@ -7,7 +7,7 @@
 
 # Bible-Fragments
 
-**Heroku Deployment URL**
+**Firebase Deployment URL**
 https://sam-s-bible-commentaries.web.app/
 
 **GitHub Repository URL**
