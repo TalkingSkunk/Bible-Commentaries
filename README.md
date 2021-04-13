@@ -8,7 +8,7 @@
 # Book-Fragments
 
 **Firebase Deployment URL**
-
+https://book-fragments.web.app/
 
 **GitHub Repository URL**
 https://github.com/TalkingSkunk/Book-Fragments
