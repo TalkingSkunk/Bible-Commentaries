@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Bible Fragments</title>
+    <title>Book Fragments</title>
     <!-- Materalize css, js, and icons -->
     <link type="text/css" href="./css/materialize.min.css" rel="stylesheet">
     <script type="text/javascript" src="./js/materialize.min.js"></script>
@@ -23,7 +23,7 @@
     <!-- top nav -->
     <nav class="z-depth-0">
         <div class="nav-wrapper container">
-            <a href="/">Bible<span>Fragments</span></a>
+            <a href="/">Book<span>Fragments</span></a>
             <span class="right grey-text text-darken-1">
                 <!-- Material Icon, when clicked, triggers "sidenav" section with id="side=menu" to slide from side -->
                 <a href="#!"><i class="material-icons sidenav-trigger" data-target="side-menu">menu</i></a>
@@ -32,7 +32,7 @@
     </nav>
     <!-- initially hidden "sidenav" section with id="side-menu" triggered -->
     <ul id="side-menu" class="sidenav side-menu">
-        <li><a class="subheader">BIBLEFRAGMENTS</a></li>
+        <li><a class="subheader">BOOKFRAGMENTS</a></li>
         <li><a href="/" class="waves-effect">Home</a></li>
         <li><a href="/pages/about.html" class="waves-effect">About</a></li>
         <li>
@@ -42,15 +42,17 @@
                 <i class="material-icons">mail_outline</i>Contact</a>
         </li>
     </ul>
-    
+
     <!-- centralize the Anchor tag with the Material icon (Add a book, or look at other books) that will trigger another "sidenav" section id="bookList" -->
     <div class="center">
-        <a class="btn-floating btn-small waves-effect waves-light sidenav-trigger red" data-target="bookList"><i class="material-icons">account_balance</i></a>
+        <a class="btn-floating btn-small waves-effect waves-light sidenav-trigger red" data-target="bookList"><i
+                class="material-icons">account_balance</i></a>
     </div>
     <!-- initially hidden "sidenav" section with id="bookList" -->
     <ul id='bookList' class='sidenav side-library'>
         <!-- first list is a modal trigger -->
-        <li><a class="waves-effect waves-light modal-trigger sidenav-close" href="#modal1"><i class="material-icons">add_circle_outline</i>Add a Book</a>
+        <li><a class="waves-effect waves-light modal-trigger sidenav-close" href="#modal1"><i
+                    class="material-icons">add_circle_outline</i>Add a Book</a>
         </li>
         <li class="divider" tabindex="-1"></li>
         <!-- populate the book list with renderBookList() from ui.js -->
@@ -111,24 +113,35 @@
 
     <!-- COMMUNICATE WITH BACK END -->
     <!-- The core Firebase JS SDK is always required and must be listed first -->
-    <script src="https://www.gstatic.com/firebasejs/8.3.0/firebase-app.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/8.3.0/firebase-firestore.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.4.0/firebase-app.js"></script>
+    <!-- link to firestore -->
+    <script src="https://www.gstatic.com/firebasejs/8.4.0/firebase-firestore.js"></script>
+
+    <!-- TODO: Add SDKs for Firebase products that you want to use
+     https://firebase.google.com/docs/web/setup#available-libraries -->
+    <script src="https://www.gstatic.com/firebasejs/8.4.0/firebase-analytics.js"></script>
 
     <script>
         // Your web app's Firebase configuration
+        // For Firebase JS SDK v7.20.0 and later, measurementId is optional
         var firebaseConfig = {
-            apiKey: "AIzaSyCPWyXkb_0iiQeVqpmDSmz3BUna2kSGmdo",
-            authDomain: "sam-s-bible-commentaries.firebaseapp.com",
-            projectId: "sam-s-bible-commentaries",
-            storageBucket: "sam-s-bible-commentaries.appspot.com",
-            messagingSenderId: "298081073814",
-            appId: "1:298081073814:web:bee2e6f961f6ddb63560b7",
+            apiKey: "AIzaSyCD7UnMXap_yTHL_N4fVUwM96yaP8_06Ws",
+            authDomain: "book-fragments.firebaseapp.com",
+            projectId: "book-fragments",
+            storageBucket: "book-fragments.appspot.com",
+            messagingSenderId: "99847535681",
+            appId: "1:99847535681:web:fce1a1266fb997363adac0",
+            measurementId: "G-1ZQB18JFFH"
         };
         // Initialize Firebase
         firebase.initializeApp(firebaseConfig);
+        firebase.analytics();
         // create a variable for us interact with database in db.js
         const db = firebase.firestore();
     </script>
+
+
+
     <script src="./js/ui.js"></script>
     <script src="./js/db.js"></script>
     <script src="./js/app.js"></script>

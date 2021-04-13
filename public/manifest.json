@@ -1,6 +1,6 @@
 {
-    "name": "Bible Fragments",
-    "short_name": "BibleFragments",
+    "name": "Book Fragments",
+    "short_name": "BookFragments",
     "start_url": "/index.html",
     "display": "standalone",
     "background_color": "#FFE9D2",
