@@ -5,13 +5,13 @@
 * alphanumeric order for books list, and for chapters list
 * authentication of users (username, and password)
 
-# Bible-Fragments
+# Book-Fragments
 
 **Firebase Deployment URL**
-https://sam-s-bible-commentaries.web.app/
+
 
 **GitHub Repository URL**
-https://github.com/TalkingSkunk/Bible-Fragments
+https://github.com/TalkingSkunk/Book-Fragments
 
 
 
@@ -74,10 +74,10 @@ SOFTWARE.
 
 
 ### What would be the foreseeable consequences if the needs are unmet?
-
+* You will not be able to remember some amazing insights you had from reading.
 
 ### What were your goals?
-
+* To create offline-capable app for adding new commentary entry.
 
 ### What have you done about it?
 * All goals are met.
@@ -94,7 +94,7 @@ SOFTWARE.
 
 ```
 GIVEN the application,
-WHEN I open the Bible Fragments,
+WHEN I open the Book Fragments,
 THEN I am presented with index page.
 WHEN I add a new Book,
 THEN I can see the Book's empty collection of commentaries.
